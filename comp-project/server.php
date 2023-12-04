@@ -30,6 +30,11 @@ if (isset($_POST['reg_user'])) {
   $user_email = mysqli_real_escape_string($db, $_POST['email']);
   $user_role = 'user';  // Assuming a default role for registration
   $hashed_user_password = md5(mysqli_real_escape_string($db, $_POST['password_1'])); // Encrypt the password
+   // Additional data for security questions
+  $security_question_1 = mysqli_real_escape_string($db, $_POST['security_question_1']);
+  $security_answer_1 = mysqli_real_escape_string($db, $_POST['security_answer_1']);
+  $security_question_2 = mysqli_real_escape_string($db, $_POST['security_question_2']);
+  $security_answer_2 = mysqli_real_escape_string($db, $_POST['security_answer_2']);
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -39,6 +44,10 @@ if (isset($_POST['reg_user'])) {
   if (empty($user_name)) { array_push($errors, "Username is required"); }
   if (empty($user_email)) { array_push($errors, "Email is required"); }
   if (empty($hashed_user_password)) { array_push($errors, "Password is required"); }
+  if (empty($security_question_1)) { array_push($errors, "Security Question 1 is required"); }
+  if (empty($security_answer_1)) { array_push($errors, "Security Answer 1 is required"); }
+  if (empty($security_question_2)) { array_push($errors, "Security Question 2 is required"); }
+  if (empty($security_answer_2)) { array_push($errors, "Security Answer 2 is required"); }
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -58,10 +67,9 @@ if (isset($_POST['reg_user'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-    $query = "INSERT INTO user_table (user_first_name, user_last_name, user_dob, user_name, user_email, hashed_user_password, user_role) 
-              VALUES('$user_first_name', '$user_last_name', '$user_dob', '$user_name', '$user_email', '$hashed_user_password', '$user_role')";
-    mysqli_query($db, $query);
-    
+    $query = "INSERT INTO user_table (user_first_name, user_last_name, user_dob, user_name, user_email, hashed_user_password, user_role, security_question_1, security_answer_1, security_question_2, security_answer_2)
+              VALUES('$user_first_name', '$user_last_name', '$user_dob', '$user_name', '$user_email', '$hashed_user_password', '$user_role', '$security_question_1', '$security_answer_1', '$security_question_2', '$security_answer_2')";
+    mysqli_query($db, $query); 
     $_SESSION['user_name'] = $user_name;
     $_SESSION['success'] = "You are now registered and logged in";
     header('location: index.php');
