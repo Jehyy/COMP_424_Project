@@ -1,3 +1,4 @@
+<!-- register.php -->
 <?php include('server.php') ?>
 
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
             display: block;
             margin-bottom: 8px;
         }
-        input {
+        input, select {
             width: 100%;
             padding: 8px;
             margin-bottom: 16px;
@@ -96,6 +97,29 @@
         <div class="input-group">
             <label>Confirm password</label>
             <input type="password" name="password_2">
+        </div>
+        <!-- Drop-down menus for security questions -->
+        <div class="input-group">
+            <label>Security Question 1</label>
+            <select name="security_question_1">
+                <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                <option value="In which city were you born?">In which city were you born?</option>
+                <option value="What is your favorite book?">What is your favorite book?</option>
+                <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                <option value="What was the make and model of your first car?">What was the make and model of your first car?</option>
+            </select>
+            <input type="text" name="security_answer_1" placeholder="Your answer">
+        </div>
+        <div class="input-group">
+            <label>Security Question 2</label>
+            <select name="security_question_2">
+                <option value="What is your favorite movie?">What is your favorite movie?</option>
+                <option value="In which year did you graduate from high school?">In which year did you graduate from high school?</option>
+                <option value="What is the name of your childhood best friend?">What is the name of your childhood best friend?</option>
+                <option value="What is the first name of your favorite teacher?">What is the first name of your favorite teacher?</option>
+                <option value="What is the color of your first car?">What is the color of your first car?</option>
+            </select>
+            <input type="text" name="security_answer_2" placeholder="Your answer">
         </div>
         <div class="input-group">
             <button type="submit" class="btn" name="reg_user">Register</button>
