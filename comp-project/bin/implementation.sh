@@ -41,18 +41,18 @@ sudo snort -d -l /var/log/snort/ -h 172.31.18.125/20 -A console -c /etc/snort/sn
 sudo touch /etc/apache2/sites-available/424GroupFive.com.conf
 
 #Write to conf file, can we do this better? 
-#sudo vim /etc/apache2/sites-available/424GroupFive.com.conf
-sudo echo "<VirtualHost *:80>" >> /etc/apache2/sites-available/424GroupFive.com.conf
-sudo echo "  ServerName 424GroupFive.com" >> /etc/apache2/sites-available/424GroupFive.com.conf
-sudo echo "  ServerAlias www.424GroupFive.com" >> /etc/apache2/sites-available/424GroupFive.com.conf
-sudo echo "  ServerAdmin sergio.ramirez.754@my.csun.edu" >> /etc/apache2/sites-available/424GroupFive.com.conf
-sudo echo "  DocumentRoot /var/www/424GroupFive.com" >> /etc/apache2/sites-available/424GroupFive.com.conf
-sudo echo "  ErrorLog ${APACHE_LOG_DIR}/error.log" >> /etc/apache2/sites-available/424GroupFive.com.conf
-sudo echo "  CustomLog ${APACHE_LOG_DIR}/access.log combined" >> /etc/apache2/sites-available/424GroupFive.com.conf
-sudo echo "</VirtualHost>" >> /etc/apache2/sites-available/424GroupFive.com.conf
+#sudo vim /etc/apache2/sites-available/Comp-424.com.conf
+sudo echo "<VirtualHost *:80>" >> /etc/apache2/sites-available/Comp-424.com.conf
+sudo echo "  ServerName Comp-424.com" >> /etc/apache2/sites-available/ Comp-424.com.conf
+sudo echo "  ServerAlias www.Comp-424.com" >> /etc/apache2/sites-available/Comp-424.com.conf
+sudo echo "  ServerAdmin sergio.ramirez.754@my.csun.edu" >> /etc/apache2/sites-available/Comp-424.com.conf
+sudo echo "  DocumentRoot /var/www/Comp-424.com" >> /etc/apache2/sites-available/Comp-424.com.conf
+sudo echo "  ErrorLog ${APACHE_LOG_DIR}/error.log" >> /etc/apache2/sites-available/Comp-424.com.conf
+sudo echo "  CustomLog ${APACHE_LOG_DIR}/access.log combined" >> /etc/apache2/sites-available/Comp-424.com.conf
+sudo echo "</VirtualHost>" >> /etc/apache2/sites-available/Comp-424.com.conf
 
 # used a2ensite tool to enable the site
-sudo a2ensite 424GroupFive.com.conf
+sudo a2ensite Comp-424.com.conf
 # disable default site
 sudo a2dissite 000-default.conf
 # restarted Apache2
@@ -60,6 +60,6 @@ sudo systemctl restart apache2
 # An unexpected error occurred:
 # There were too many requests of a given type :: Error creating new order :: too many failed authorizations recently: see https://letsencrypt.org/docs/failed-validation-limit/
 #----------Configuring SSL Certificate to site----------#
-sudo certbot --apache -d 424GroupFive.com
+sudo certbot --apache -d Comp-424.com
 # set Alias for subdomains to work with certificate
-sudo certbot --apache -d 424GroupFive.com -d www.424GroupFive.com
+sudo certbot --apache -d Comp-424.com -d www.Comp-424.com
